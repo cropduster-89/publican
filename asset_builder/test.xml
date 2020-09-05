@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<assets>
+		<asset assetTypeId="0">
+			<bmp path="../assets_bmp/grass.tga" size="64" />
+			<string>A Tile!</string>
+		</asset>
+		<asset assetTypeId="1">
+			<font path="C:/Windows/Fonts/consola.ttf" />
+		</asset>
+		<asset assetTypeId="2">
+			<font path="C:/Windows/Fonts/BRADHITC.TTF" />
+		</asset>
+	</assets>
