@@ -4,6 +4,9 @@
 
 #include <stdint.h>
 
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
+
 inline uintptr_t AlignPow2(size_t value, uint32_t alignment)
 {
 	return (value + ((alignment) - 1)) & ~((value - value) + (alignment) - 1);

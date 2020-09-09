@@ -17,7 +17,7 @@ static void FreeBlock(struct win32_memory_block *block)
 	assert(result);
 }
 
-extern void Win32_DeAlloc(struct platform_memory_block *block)
+extern void Win32_DeAlloc(struct memory_block *block)
 {
 	if(block) {
 		struct win32_memory_block *win32Block = ((struct win32_memory_block *)block);
@@ -25,7 +25,7 @@ extern void Win32_DeAlloc(struct platform_memory_block *block)
 	}
 }
 
-extern struct platform_memory_block *Win32_Alloc(size_t size,
+extern struct memory_block *Win32_Alloc(size_t size,
 												 DWORDLONG flags)
 {
 	assert(sizeof(struct win32_memory_block) == 64);
@@ -69,7 +69,7 @@ extern struct platform_memory_block *Win32_Alloc(size_t size,
 	block->next->prev = block;
 	EndTicketMutex(&globalWin32State.memMutex);
 
-	struct platform_memory_block *patBlock = &block->block;
+	struct memory_block *patBlock = &block->block;
 
 	return(patBlock);
 }

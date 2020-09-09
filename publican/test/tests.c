@@ -33,8 +33,12 @@ int main(void)
 		// platform memory
 		cmocka_unit_test(ZERO_STRUCT__sets_all_bytes_in_a_struct_to_zero),
 		cmocka_unit_test(ZERO_ARRAY__sets_all_bytes_in_an_array_to_zero),
+		cmocka_unit_test(GetAlignOffset__returns_the_correct_offset_for_an_arena),
+		cmocka_unit_test(GetAlignOffset__returns_0_when_used_is_factor_of_aligned),
+		cmocka_unit_test(PUSH_STRUCT__returns_plat_block),
 
 		cmocka_unit_test(MULT_VEC_can_multiply_a_vector),
+
 	};
 
 	return cmocka_run_group_tests(tests, NULL, NULL);

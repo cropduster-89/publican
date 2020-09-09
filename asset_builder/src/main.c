@@ -5,6 +5,7 @@ __________     ___.   .__  .__                      	Asset builder
  |    |   |  |  / \_\ \  |_|  \  \___ / __ \|   |  \	asset file format
  |____|   |____/|___  /____/__|\___  >____  /___|  /
                     \/             \/     \/     \/
+                    TODO: Load sound files
 *************************************************************************************/
 
 #include <stdio.h>
@@ -16,9 +17,9 @@ __________     ___.   .__  .__                      	Asset builder
 */
 int main(int argc, char *argv[])
 {
-	printf("\n**********************************\n");
+	printf("\n****************************************\n");
 	printf("- Publican Asset Builder\n- Tom Blicq 2020, Zenburp\n");
-	printf("**********************************\n\n");
+	printf("****************************************\n\n");
 	printf("%d files passed\n", argc - 1);
 
 	for(int32_t i = 1; i < argc; ++i) {

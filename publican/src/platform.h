@@ -20,6 +20,7 @@ struct platform_memory_block {
 	uint64_t size;
 	uint8_t *base;
 	uintptr_t used;
+
 	struct platform_memory_block *arenaPrev;
 };
 
@@ -89,6 +90,12 @@ struct file_read_output {
 	void *contents;
 };
 
+#define PLATFORM_ALLOCATE_MEMORY(name) struct platform_memory_block *name(size_t size, uint64_t flags)
+typedef PLATFORM_ALLOCATE_MEMORY(platform_allocate_memory);
+
+#define PLATFORM_DEALLOCATE_MEMORY(name) void name(struct platform_memory_block *block)
+typedef PLATFORM_DEALLOCATE_MEMORY(platform_deallocate_memory);
+
 #define PLATFORM_GET_ALL_FILES_OF_TYPE_START(name) struct platform_file_group name(enum platform_file_type type)
 typedef PLATFORM_GET_ALL_FILES_OF_TYPE_START(platform_get_all_files_of_type_start);
 
@@ -107,15 +114,16 @@ typedef PLATFORM_FILE_ERROR(platform_file_error);
 #define PlatformNoFileErrors(handle) ((handle)->noErrors)
 
 struct platform_api {
+	platform_allocate_memory *Alloc;
+	platform_deallocate_memory *DeAlloc;
+
 	platform_add_entry *AddTask;
 	platform_complete_all_work *CompleteAllTasks;
-
 
 	platform_get_all_files_of_type_start *GetAllFilesOfTypeStart;
 	platform_get_all_files_of_type_end *GetAllFilesOfTypeEnd;
 	platform_open_next_file *GetNextFile;
 	platform_read_data_from_file *GetDataFromFile;
-
 };
 
 struct platform_api api;
